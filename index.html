@@ -9,8 +9,6 @@
 </body>
 
 <script type="text/javascript">
-    debugger;
-    
     const sleep = time => {
         return new Promise((resolve) => {
             setTimeout(resolve, time);
@@ -28,6 +26,7 @@
     while(true) {
         sleep(500);
         const now = new Date();
+        console.log(`${now.getMinutes()}:${now.getSeconds()}`);
         if (now.getMinutes() !== 0) continue;
         const stamp = timeStamp(now.getDate(), now.getHours());
         const hasBeeped = log.filter(t => t.date === stamp.date && t.hour === stamp.hour).length >= 1;
