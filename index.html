@@ -21,10 +21,10 @@
         log.push(new Date());
         
         while(true) {
-            debugger;
             await sleep(1000);
             const now = new Date();
             const hasBeeped = log.filter(t => t.getDate() === now.getDate() && t.getHours() === now.getHours()).length >= 1;
+            debugger;
             if (hasBeeped) continue;
             log.push(now);
 //             new Notification(`${now.getHours()}:00`);
