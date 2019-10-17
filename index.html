@@ -25,15 +25,13 @@
     
     const loop = async () => {
         while(true) {
-            await sleep(500);
+            await sleep(1000);
             const now = new Date();
-            console.log(`${now.getMinutes()}:${now.getSeconds()}`);
-            if (now.getMinutes() !== 0) continue;
             const stamp = timeStamp(now.getDate(), now.getHours());
             const hasBeeped = log.filter(t => t.date === stamp.date && t.hour === stamp.hour).length >= 1;
             if (hasBeeped) continue;
             log.push(stamp);
-            window.alert(`${stamp.hour}:00`);
+            new Notification(`${now.getHours()}:00`);
         }
     };
     
