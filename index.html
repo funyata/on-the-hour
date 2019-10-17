@@ -21,14 +21,12 @@
         log.push(new Date());
         
         while(true) {
+            debugger;
             await sleep(1000);
             const now = new Date();
-            const hasBeeped = log.filter(t => t.getDate() === now.getDate() && t.getHours() === now.getHours).length >= 1;
+            const hasBeeped = log.filter(t => t.getDate() === now.getDate() && t.getHours() === now.getHours()).length >= 1;
             if (hasBeeped) continue;
             log.push(now);
-            log.forEach(d => {
-                console.log(`${d.getDate()}:${d.getHours()}`);
-            });
 //             new Notification(`${now.getHours()}:00`);
         }
     };
