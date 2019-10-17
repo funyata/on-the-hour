@@ -25,7 +25,7 @@
     
     const now = () => {
         const d = new Date();
-        return timeStamp(d.date, d,hour);  
+        return timeStamp(d.getDate(), d.getHours());  
     };
     
     const loop = async () => {
