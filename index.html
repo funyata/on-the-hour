@@ -23,15 +23,21 @@
         };
     };
     
+    const now = () => {
+        const d = new Date();
+        return timeStamp(d.date, d,hour);  
+    };
+    
     const loop = async () => {
+        log.push(now());
+        
         while(true) {
             await sleep(1000);
-            const now = new Date();
-            const stamp = timeStamp(now.getDate(), now.getHours());
+            const stamp = now();
             const hasBeeped = log.filter(t => t.date === stamp.date && t.hour === stamp.hour).length >= 1;
             if (hasBeeped) continue;
             log.push(stamp);
-            new Notification(`${now.getHours()}:00`);
+            new Notification(`${stamp.getHours()}:00`);
         }
     };
     
