@@ -15,11 +15,17 @@ const timer = async (date, callback) => {
 };
 
 const loop = async () => {
+    const next = document.querySelector("#next");
+    const log = document.querySelector("#log");
+    
     while(true) {
         const nextTime = new Date();
         nextTime.setHours(nextTime.getHours() + 1, 0, 0);
-        document.querySelector("#until").innerText = `${nextTime.getHours()}:00に通知します。`
+        next.innerText = `${nextTime.getHours()}:00に通知します。`
         await timer(nextTime, () => {new Notification(`${nextTime.getHours()}:00`)});
+        const div = document.createElement("div");
+        div.innertText = `${nextTime.getHours()}:00に通知しました。`;
+        log.appendChild(div);
     }
 };
 
