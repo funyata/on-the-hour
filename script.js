@@ -3,21 +3,23 @@ const sleep = time => {
         setTimeout(resolve, time);
     });
 };
-const log = [];
+
+const timer = async (date, callback) => {
+    while (true) {
+        await sleep(300);
+        const now = new Date();
+        if (date.getTime() < now.getTime()) break;
+    }
+    
+    callback();
+};
 
 const loop = async () => {
-    log.push(new Date());
-
     while(true) {
-        await sleep(1000);
-        const now = new Date();
-        const hasBeeped = log.filter(t => t.getDate() === now.getDate() && t.getHours() === now.getHours()).length >= 1;
-        debugger;
-//             console.log(`hasBeeped: ${hasBeeped}`);
-//             log.forEach(t => console.log(t));
-        if (hasBeeped) continue;
-        log.push(now);
-        new Notification(`${now.getHours()}:00`);
+        const nextTime = new Date();
+        nextTime.setHours(nextTime.getHours() + 1, 0, 0);
+        document.querySelector("#until").innerText = `${nextTime.getHours()}:00に通知します。`
+        await timer(nextTime, () => {new Notification(`${nextTime.getHours()}:00`)});
     }
 };
 
