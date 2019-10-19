@@ -21,10 +21,10 @@ const loop = async () => {
     while(true) {
         const nextTime = new Date();
         nextTime.setHours(nextTime.getHours() + 1, 0, 0);
-        next.innerText = `${nextTime.getHours()}:00に通知します。`
+        next.innerHTML = `${nextTime.getHours()}:00に通知します。`;
         await timer(nextTime, () => {new Notification(`${nextTime.getHours()}:00`)});
         const div = document.createElement("div");
-        div.innertText = `${nextTime.getHours()}:00に通知しました。`;
+        div.innertHTML = `${nextTime.getHours()}:00に通知しました。`;
         log.appendChild(div);
     }
 };
