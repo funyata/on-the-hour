@@ -17,7 +17,7 @@ const timer = async (date, callback) => {
 const view = {};
 view.next = date => {
     const next = document.querySelector("#next");
-    next.innerHTML = `${date.getHours()}:00に通知します。`;  
+    next.innerHTML = `次は${date.getHours()}:00に通知します。`;  
 };
 
 view.log = date => {
