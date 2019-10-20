@@ -24,7 +24,7 @@ const loop = async () => {
         next.innerHTML = `${nextTime.getHours()}:00に通知します。`;
         await timer(nextTime, () => {new Notification(`${nextTime.getHours()}:00`)});
         const div = document.createElement("div");
-        div.innertHTML = `${nextTime.getHours()}:00に通知しました。`;
+        div.innerHTML = `${nextTime.getHours()}:00に通知しました。`;
         log.appendChild(div);
     }
 };
