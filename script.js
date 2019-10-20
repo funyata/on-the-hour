@@ -14,18 +14,26 @@ const timer = async (date, callback) => {
     callback();
 };
 
-const loop = async () => {
+const view = {};
+view.next = date => {
     const next = document.querySelector("#next");
+    next.innerHTML = `${date.getHours()}:00に通知します。`;  
+};
+
+view.log = date => {
     const log = document.querySelector("#log");
-    
+    const div = document.createElement("div");
+    div.innerHTML = `${nextTime.getHours()}:00に通知しました。`;
+    log.appendChild(div);
+};
+
+const loop = async () => {
     while(true) {
         const nextTime = new Date();
         nextTime.setHours(nextTime.getHours() + 1, 0, 0);
-        next.innerHTML = `${nextTime.getHours()}:00に通知します。`;
+        view.next(nextTime);
         await timer(nextTime, () => {new Notification(`${nextTime.getHours()}:00`)});
-        const div = document.createElement("div");
-        div.innerHTML = `${nextTime.getHours()}:00に通知しました。`;
-        log.appendChild(div);
+        view.log(nextTime);
     }
 };
 
