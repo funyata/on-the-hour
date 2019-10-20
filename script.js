@@ -23,7 +23,7 @@ view.next = date => {
 view.log = date => {
     const log = document.querySelector("#log");
     const div = document.createElement("div");
-    div.innerHTML = `${nextTime.getHours()}:00に通知しました。`;
+    div.innerHTML = `${date.getHours()}:00に通知しました。`;
     log.appendChild(div);
 };
 
